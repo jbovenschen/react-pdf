@@ -1,3 +1,28 @@
 {
-	"presets": ["es2015", "stage-0", "react"]
+	"presets": [
+		["env", {
+			"targets": {
+				"browsers": ["last 2 versions", "ie >= 11"]
+			},
+			"useBuiltIns": false,
+			"modules": false
+		}]
+	],
+	"plugins": [
+		"transform-class-properties",
+		["transform-object-rest-spread", {
+			"useBuiltIns": true
+		}],
+		["transform-react-jsx", {
+			"useBuiltIns": true
+		}],
+		["transform-runtime", {
+			"helpers": true,
+			"polyfill": true,
+			"regenerator": true
+		}],
+		["transform-regenerator", {
+			"async": false
+		}]
+	]
 }
