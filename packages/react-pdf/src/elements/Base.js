@@ -1,8 +1,9 @@
-import Yoga from 'yoga-layout';
+import Yoga from '../../bin';
 import toPairsIn from 'lodash.topairsin';
 import isFunction from 'lodash.isfunction';
 import upperFirst from 'lodash.upperfirst';
 import StyleSheet from '../stylesheet';
+import Borders from '../mixins/borders';
 
 class Base {
   parent = null;
@@ -22,7 +23,7 @@ class Base {
     };
 
     this.style = StyleSheet.resolve(this.props.style);
-    this.layout = Yoga.Node.create();
+    this.layout = Yoga.Node.createDefault();
 
     if (this.props) {
       this.applyProps(this.props);
@@ -79,10 +80,51 @@ class Base {
       case 'paddingLeft':
         this.layout.setPadding(Yoga.EDGE_LEFT, value);
         break;
+      case 'borderTopWidth':
+        this.layout.setBorder(Yoga.EDGE_TOP, value);
+        break;
+      case 'borderRightWidth':
+        this.layout.setBorder(Yoga.EDGE_RIGHT, value);
+        break;
+      case 'borderBottomWidth':
+        this.layout.setBorder(Yoga.EDGE_BOTTOM, value);
+        break;
+      case 'borderLeftWidth':
+        this.layout.setBorder(Yoga.EDGE_LEFT, value);
+        break;
+      case 'position':
+        this.layout.setPositionType(
+          value === 'absolute'
+            ? Yoga.POSITION_TYPE_ABSOLUTE
+            : Yoga.POSITION_TYPE_RELATIVE,
+        );
+        break;
+      case 'top':
+        this.setPosition(Yoga.EDGE_TOP, value);
+        break;
+      case 'right':
+        this.setPosition(Yoga.EDGE_RIGHT, value);
+        break;
+      case 'bottom':
+        this.setPosition(Yoga.EDGE_BOTTOM, value);
+        break;
+      case 'left':
+        this.setPosition(Yoga.EDGE_LEFT, value);
+        break;
       default:
         if (isFunction(this.layout[setter])) {
           this.layout[setter](value);
         }
+    }
+  }
+
+  setPosition(edge, value) {
+    const isPercent = /^(\d+)?%$/g.exec(value);
+
+    if (isPercent) {
+      this.layout.setPositionPercent(edge, parseInt(isPercent[1], 10));
+    } else {
+      this.layout.setPosition(edge, value);
     }
   }
 
@@ -135,5 +177,7 @@ class Base {
     }
   }
 }
+
+Object.assign(Base.prototype, Borders);
 
 export default Base;

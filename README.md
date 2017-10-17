@@ -81,22 +81,36 @@ For each example, try opening `output.pdf` to see the result.
         <img width="150" height="150" src="https://github.com/diegomura/react-pdf/blob/master/examples/images/thumb.png">
         <br>
         <a href="https://github.com/diegomura/react-pdf/tree/master/examples/images/">Images</a>
-      </td> 
+      </td>
 			<td align="center" valign="top">
-				<img width="150" height="150" src="https://github.com/diegomura/react-pdf/blob/master/examples/page-layout/thumb.png">
+				<img width="150" height="150" src="https://github.com/diegomura/react-pdf/blob/master/examples/resume/thumb.png">
 				<br>
-				<a href="https://github.com/diegomura/react-pdf/tree/master/examples/page-layout/">Page Layout</a>
+				<a href="https://github.com/diegomura/react-pdf/tree/master/examples/resume/">Resume</a>
 			</td>  
 			<td align="center" valign="top">
 				<img width="150" height="150" src="https://github.com/diegomura/react-pdf/blob/master/examples/fractals/thumb.png">
 				<br>
 				<a href="https://github.com/diegomura/react-pdf/tree/master/examples/fractals/">Fractals</a>
 			</td>   
+			<td align="center" valign="top">
+				<img width="150" height="150" src="https://github.com/diegomura/react-pdf/blob/master/examples/knobs/thumb.png">
+				<br>
+				<a href="https://github.com/diegomura/react-pdf/tree/master/examples/knobs/">Knobs</a>
+			</td>   
 		</tr>
 	</tbody>
 </table>
 
-To run an example for yourself, run `yarn example -- <example-name>` locally.
+To run the examples, first clone the project and install the dependencies:
+```sh
+git clone https://github.com/diegomura/react-pdf.git
+cd react-pdf
+yarn install
+```
+Then, run `yarn example -- <example-name>`
+```sh
+yarn example -- fractals
+```
 
 ## Contributors
 
